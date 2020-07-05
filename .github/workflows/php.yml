@@ -36,4 +36,4 @@ jobs:
     - name: Run test suite
       run: composer run-script test
     - name: coverage
-      run: bash <(curl -s https://codecov.io/bash) -t 3aae9075-186f-444b-bd28-d12e170a24d8
+      run: bash <(curl -s https://codecov.io/bash) -t ea5f87ac-29ed-4f68-904c-1d2a2b22e3d0
