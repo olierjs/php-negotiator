@@ -2,7 +2,6 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Press\Request;
 use Press\Utils\Negotiator;
 
 
@@ -379,7 +378,7 @@ class MediaTypeTest extends TestCase
 
     private function createRequest($headers)
     {
-        $request = new Request();
+        $request = new stdClass();
         $request->headers = [];
 
         if ($headers) {
@@ -399,7 +398,7 @@ class MediaTypeTest extends TestCase
     public function testMediaType($accept_media_type, $expected)
     {
         $request = self::createRequest(['Accept' => $accept_media_type]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->mediaType();
         static::assertEquals($expected, $result);
@@ -415,7 +414,7 @@ class MediaTypeTest extends TestCase
     public function testMediaTypeArray($accept_media_type, $media_type, $expected)
     {
         $request = self::createRequest(['Accept' => $accept_media_type]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->mediaType($media_type);
         static::assertEquals($expected, $result);
@@ -429,7 +428,7 @@ class MediaTypeTest extends TestCase
     public function testMediaTypes($accept_media_type, $expected)
     {
         $request = self::createRequest(['Accept' => $accept_media_type]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->mediaTypes();
         static::assertEquals($expected, $result);
@@ -444,7 +443,7 @@ class MediaTypeTest extends TestCase
     public function testMediaTypesArray($accept_media_type, $media_type, $expected)
     {
         $request = self::createRequest(['Accept' => $accept_media_type]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->mediaTypes($media_type);
         static::assertEquals($expected, $result);
