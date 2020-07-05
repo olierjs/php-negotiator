@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use Press\Request;
 use Press\Utils\Negotiator;
 use PHPUnit\Framework\TestCase;
 
@@ -369,7 +368,7 @@ class EncodingTest extends TestCase
 
     private function createRequest($headers)
     {
-        $request = new Request();
+        $request = new stdClass();
         $request->headers = [];
 
         if ($headers) {
@@ -389,7 +388,7 @@ class EncodingTest extends TestCase
     public function testEncoding($accept_encoding, $expected)
     {
         $request = self::createRequest(['Accept-Encoding' => $accept_encoding]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->encoding();
         static::assertEquals($expected, $result);
@@ -404,7 +403,7 @@ class EncodingTest extends TestCase
     public function testEncodingArray($accept_encoding, $expected, $encoding)
     {
         $request = self::createRequest(['Accept-Encoding' => $accept_encoding]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->encoding($encoding);
         static::assertEquals($expected, $result);
@@ -418,7 +417,7 @@ class EncodingTest extends TestCase
     public function testEncodings($accept_encoding, $expected)
     {
         $request = self::createRequest(['Accept-Encoding' => $accept_encoding]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->encodings();
         static::assertEquals($expected, $result);
@@ -434,7 +433,7 @@ class EncodingTest extends TestCase
     public function testEncodingsArray($accept_encoding, $encoding, $expected)
     {
         $request = self::createRequest(['Accept-Encoding' => $accept_encoding]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->encodings($encoding);
         static::assertEquals($expected, $result);

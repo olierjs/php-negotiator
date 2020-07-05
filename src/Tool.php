@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Press\Utils\Negotiator;
-
-use Press\Utils\Mime;
+namespace Press\Utils;
 
 
 class Tool

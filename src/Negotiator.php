@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Press\Utils\Negotiator;
-
-use Press\Request;
+namespace Press\Utils;
 
 
 class Negotiator
@@ -12,7 +10,7 @@ class Negotiator
     public $request;
 
 
-    public function __construct(Request $request)
+    public function __construct($request)
     {
         $this->request = $request;
     }

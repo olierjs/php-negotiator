@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Press\Utils\Negotiator;
-use Press\Request;
-
 
 class CharsetTest extends TestCase
 {
@@ -274,7 +272,7 @@ class CharsetTest extends TestCase
 
     private static function createRequest($headers)
     {
-        $request = new Request();
+        $request = new stdClass();
         $request->headers = [];
 
         if ($headers) {
@@ -294,7 +292,7 @@ class CharsetTest extends TestCase
     public function testCharset($accept_charset, $expected)
     {
         $request = self::createRequest(['Accept-Charset' => $accept_charset]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->charset();
         self::assertEquals($expected, $result);
@@ -309,7 +307,7 @@ class CharsetTest extends TestCase
     public function testCharsetWithArray($accept_charset, $expected, $charset_array)
     {
         $request = self::createRequest(['Accept-Charset' => $accept_charset]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->charset($charset_array);
         self::assertEquals($expected, $result);
@@ -323,7 +321,7 @@ class CharsetTest extends TestCase
     public function testCharsets($accept_charsets, $expected)
     {
         $request = self::createRequest(['Accept-Charset' => $accept_charsets]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->charsets();
         self::assertEquals($expected, $result);
@@ -338,7 +336,7 @@ class CharsetTest extends TestCase
     public function testCharsetsWithArray($accept_charset, $expected, $charsets_array)
     {
         $request = self::createRequest(['Accept-Charset' => $accept_charset]);
-        $negotiator = new Negotiator\Negotiator($request);
+        $negotiator = new Negotiator($request);
 
         $result = $negotiator->charsets($charsets_array);
         self::assertEquals($expected, $result);

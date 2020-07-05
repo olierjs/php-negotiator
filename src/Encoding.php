@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Press\Utils\Negotiator;
+namespace Press\Utils;
 
 
 class Encoding

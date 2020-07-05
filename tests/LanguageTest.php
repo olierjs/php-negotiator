@@ -1,10 +1,8 @@
 <?php
 declare(strict_types=1);
 
-use Press\Request;
-use Press\Utils\Negotiator\Language;
 use PHPUnit\Framework\TestCase;
-use Press\Utils\Negotiator\Negotiator;
+use Press\Utils\Negotiator;
 
 
 class LanguageTest extends TestCase
@@ -344,7 +342,7 @@ class LanguageTest extends TestCase
 
     private function createRequest($headers)
     {
-        $request = new Request();
+        $request = new stdClass();
         $request->headers = [];
 
         if ($headers) {
