@@ -20,6 +20,11 @@ class Negotiator
     {
         $accept_charset = array_key_exists('accept-charset', $this->request->headers) ?
             $this->request->headers['accept-charset'] : '';
+
+        if (is_array($accept_charset)) {
+            $accept_charset = join('', $accept_charset);
+        }
+
         $accept_charset = $accept_charset === '' ? '' : $accept_charset;
         return Charset::preferredCharsets($accept_charset, $available);
     }
