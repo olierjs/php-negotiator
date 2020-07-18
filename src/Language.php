@@ -120,7 +120,7 @@ class Language
     public static function preferredLanguage($accept = null, $provided = null)
     {
         // RFC 2616 sec 14.4: no header = *
-        $accept = $accept === null ? '*' : $accept;
+        $accept = !$accept ? '*' : $accept;
         $accepts = self::parseAcceptLanguage($accept);
 
         if (!$provided && is_array($provided) === false) {

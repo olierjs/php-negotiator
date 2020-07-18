@@ -104,7 +104,7 @@ class Encoding
      */
     public static function preferredEncodings($accept = '', $provided)
     {
-        $accept = empty($accept) ? '' : $accept;
+        $accept = !$accept ? '' : $accept;
         $accepts = self::parseAcceptEncoding($accept);
 
         if (!$provided && is_array($provided) === false) {

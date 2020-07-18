@@ -11,7 +11,7 @@ class Charset
     {
 //         RFC 2616 sec 14.2: no header = *
 
-        $accept = $accept === null ? '*' : $accept;
+        $accept = !$accept ? '*' : $accept;
         $accepts = self::parseAcceptCharset($accept);
 
         if (!$provided && is_array($provided) === false) {
